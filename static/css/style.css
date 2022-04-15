@@ -1,0 +1,189 @@
+body
+{
+    background-color:aliceblue!important;
+}
+.enust
+{
+    width: 100%;
+    height: 20%;
+    position: absolute;
+    background-color: ghostwhite;
+    border-bottom:orange solid 10px;
+    border-top:orange solid 10px;
+    margin-top: 35px;
+    transition: all 800ms;
+    text-decoration: none;
+}
+
+.tt
+{
+    margin-left: 40%;
+}
+.searchbton
+{
+    
+    position: absolute;
+    margin-left: 500px;
+    width:30%;
+    margin-top: 40px;
+    height:50px;
+    align-content: center;
+}
+/*.imgtop
+{
+    float: right;
+    margin-right: 20px;
+    width: auto;
+    height: 100%;
+}*/
+a{
+    text-decoration:none;
+}
+.text-nsc {
+    transition: all 500ms;
+    color: dodgerblue;
+    text-decoration: none;
+    position: absolute;
+    font-size: 55px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+.custom-select , .form-control
+{
+    transition: all 500ms;
+}
+.form-control
+{
+    align-content: center;
+    
+}
+.custom-select:hover , .form-control:hover
+{
+    border-bottom:3px solid black;
+}
+/* HEADER VE CONTAINER ARASINDA BULUNAN BOŞ DİV*/
+.space
+{
+    width: 100%!important;height:230px; 
+}
+.btn-primary:hover
+{
+    color: #007bff!important;
+    border-color: #007bff!important;
+    background-color: #fff!important;
+}
+/* Detail.html*/
+.detayy 
+{
+    width: 950px;
+    margin: auto;
+}
+.categoryd-d
+{
+    width: 950px;
+    float: left;
+}
+.kurald
+{
+    margin-top:15px;
+    width: 150px;
+    float: left;
+}
+.categoryd
+{
+    float: left;
+    width: 750px;
+    margin: 15px;
+    color: orange;
+}
+.titled-d
+{
+    width: 950px;
+    float: left;
+}
+.kuraldd
+{
+    margin-top: 15px;
+    width: 150px;
+    float: left;
+}
+.titled
+{
+    float: left;
+    width: 750px;
+    margin: 15px;
+    color: orange;
+}
+.contentd-d
+{
+    width: 950px;
+    float: left;
+}
+.kuralddd 
+{
+    margin-top: 15px;
+    width: 150px;
+    float: left;
+}
+.contentd 
+{
+    float: left;
+    width: 750px;
+    margin: 15px;
+    color: orange;
+}
+.contentx-d 
+{
+    width: 950px;
+    float: left;
+}
+.kuralddddd 
+{
+    margin-top: 15px;
+    width: 150px;
+    float: left;
+}
+.contentxd 
+{
+    float: left;
+    width: 750px;
+    margin: 15px;
+    color: orange;
+}
+.imaged-d 
+{
+    width: 950px;
+    float: left;
+}
+.kuraldddd 
+{
+    margin-top: 15px;
+    width: 150px;
+    float: left;
+}
+.imaged 
+{
+    float: left;
+    width: 750px;
+    margin: 15px;
+}
+.appnamed-d 
+{
+    width: 950px;
+    float: left;
+}
+
+.kuraldddddd
+{
+    margin-top: 15px;
+    width: 150px;
+    float: left;
+}
+
+.appnamed 
+{
+    float: left;
+    width: 750px;
+    margin: 15px;
+    color: orange;
+}
