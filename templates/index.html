@@ -23,8 +23,8 @@
             </form>
         </div>
 
-        <img class="imgtop" style="float:right; margin-right:20px; width:auto; height:100%; " src="/static/img/nsc.jpg" />
-        <img class="imgtop2" style="float:right; margin-right:20px; width:auto; height:100%;" src="/static/img/securespace.jpg" />
+        <a href="/dashboard"><img class="imgtop" style="float:right; margin-right:20px; width:auto; height:100%; " src="/static/img/nsc.jpg" /></a>
+        <a href="/dashboard"><img class="imgtop2" style="float:right; margin-right:20px; width:auto; height:100%;" src="/static/img/securespace.jpg" /></a>
     </div>
 
 
@@ -34,7 +34,7 @@
 
         <hr>
 
-        <form action="/add" method="post">
+        <form action="/add" method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="baslık"><h3>Kural Adı</h3></label>
                 <input type="text" name="title" class="form-control" id="Baslık" placeholder="Kural Adını Giriniz">
@@ -66,10 +66,9 @@
                 <label for="contentx"><h3>Açıklama</h3></label>
                 <textarea type="text" name="contentx" class="form-control" id="acıklama" placeholder="Açıklamayı Giriniz"></textarea>
             </div>
-
             <div class="form-group">
-                <label for="gorsel"><h3>Görsel (incomplete)</h3></label>
-                <input type="file" name="img" class="form-control-file" value=" " id="gorselup">
+                <label for="file"><h3>Görsel (incomplete)</h3></label>
+                <input type="file" name="file" id="file">
             </div>
             <hr /><br />
             <button type="submit" class="btn btn-warning">Ekle</button>
