@@ -1,27 +1,28 @@
 ## flaskdatabase
 
-# Gereklilikler 
+# Requirements
  
  ```
  pip install flask
  pip install flask_sqlalchemy
  pip install werkzeug.utils
+ pip install cryptography
  ```
  ```
  sqlite
  ```
 
-# Çalıştırmak İçin (Terminalde)
+# For Run
 
  ```
- sqlite3 (dbismi).db
+ sqlite3 (databasename).db
  .tables
  .exit
  
  python
- from (pyismi) import db
+ from (filename) import db
  db.create_all()
  exit()
  
- python (pyismi).py
+ python (filename).py
  ```
