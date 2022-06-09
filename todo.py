@@ -18,6 +18,7 @@ from io import BytesIO
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'nsc123 956csn'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/kerem/Desktop/todoapp/todo.db'
+app.config['UPLOAD_PATH'] = 'static/img'
 db = SQLAlchemy(app)
 key = Fernet.generate_key()
 print(key)
@@ -39,7 +40,7 @@ def rulesTodo():
     q = request.args.get("q")
 
     if q:
-        todos = Todo.query.filter(Todo.title.contains(q) | Todo.category.contains(q))
+        todos = Todo.query.filter(Todo.title.contains(q) | Todo.category.contains(q) | Todo.appname.contains(q))
     else:
         todos = Todo.query.all()
 
@@ -55,6 +56,10 @@ def addTodo():
     appname = request.form.get("appname")
     if request.method == 'POST':
         file = request.files["file"]
+        filename = secure_filename(file.filename)
+    if filename != '':
+        file_ext = os.path.splitext(filename)[1]
+        file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
 
     newTodo = Todo(title = title,content = content,category = category,contentx = contentx,appname = appname,filename=file.filename, file=file.read())
 
