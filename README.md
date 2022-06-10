@@ -15,6 +15,10 @@
 # For Run
 
  ```
+ python3 -m venv python3-virtualenv
+ pip3 freeze
+ source python3-virtualenv/bin/activate
+
  sqlite3 (databasename).db
  .tables
  .exit
