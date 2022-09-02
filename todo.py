@@ -16,8 +16,8 @@ from cryptography.fernet import Fernet
 from io import BytesIO
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'nsc123 956csn'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/kerem/Desktop/todoapp/todo.db'
+app.config['SECRET_KEY'] = '123456789'
+app.config['SQLALCHEMY_DATABASE_URI'] = '#DB PATH#'
 app.config['UPLOAD_PATH'] = 'static/img'
 db = SQLAlchemy(app)
 key = Fernet.generate_key()
@@ -27,7 +27,7 @@ login_manager.login_view = 'loginApp'
 login_manager.init_app(app)
 
 
-#Kural App
+#DB App
 @app.route("/index")
 @login_required
 def index():
@@ -93,12 +93,18 @@ def updateTodo(id):
         rule_update.content= request.form["content"]
         rule_update.contentx = request.form["contentx"]
         rule_update.appname = request.form["appname"]
-        rule_update.file = request.form["file"]
-        
+        if request.method == 'POST':
+            rule_update.file = request.files["file"]
+            filename = secure_filename(file.filename)
+        if filename != '':
+            file_ext = os.path.splitext(filename)[1]
+            file.save(os.path.join(app.config['UPLOAD_PATH'], filename))
+
         db.session.commit()
-        return render_template("update.html",todo = todo,rule_update = rule_update)       
+        return render_template("update.html",todo = todo,rule_update = rule_update,filename=file.filename,file=file.read())       
     else:
         return render_template("update.html",todo = todo,rule_update = rule_update)
+
 #Login
 @app.route("/", methods=['GET','POST'])
 def loginApp():
@@ -109,13 +115,13 @@ def loginApp():
         user = User.query.filter_by(username=username).first()
         if user:
             if check_password_hash(user.password, password):
-                flash('Giriş Başarılı!', category='success')
+                flash('Login successful!', category='success')
                 login_user(user, remember=False)
                 return redirect(url_for("dashboard"))
             else:
-                flash('Şifre Hatalı!', category='error')
+                flash('Password is wrong!', category='error')
         else:
-            flash('Kullanıcı Adı Hatalı!', category='error')
+            flash('Username is wrong!', category='error')
     return render_template("login.html", user=current_user)
 
 @app.route("/dashboard", methods=["GET","POST"])
@@ -143,21 +149,21 @@ def sign_up():
 
         user = User.query.filter_by(username=username).first()
         if user:
-            flash('Kullanıcı Adı Zaten Var', category='error')
+            flash('Username alredy exist', category='error')
         elif len(username) < 4:
-            flash('Kullanıcı Adı 3 Karakterden Fazla Olmalıdır', category='error')
+            flash('Username must be at least 3 characters', category='error')
         elif len(first_name) < 2:
-            flash('İsim 2 Karakterden Fazla Olmalıdır', category='error')
+            flash('Name must be at least 2 characters', category='error')
         elif password1 != password2:
-            flash('Parola Uyuşmadı', category='error')
+            flash('Password did not match', category='error')
         elif len(password1) < 7:
-            flash('Parola En Az 7 Karakterden Oluşmalıdır', category='error')
+            flash('Password must be at least 7 characters', category='error')
         else:
             new_user = User(username=username, first_name=first_name, password=generate_password_hash(password1, method='sha256'))
             db.session.add(new_user)
             db.session.commit()
             login_user(new_user, remember=False)
-            flash('Kullanıcı Oluşturuldu!', category='success')
+            flash('User Created!', category='success')
             return redirect(url_for("dashboard"))
 
     return render_template("sign_up.html", user=current_user)
